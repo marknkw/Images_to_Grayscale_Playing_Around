@@ -26,17 +26,25 @@ def importar_imagem(imagem):
     imagem_inicial = "Resources/" + imagem
     print(imagem_inicial)
     with Image.open(imagem_inicial) as imagem_canais:
-        canais_convertidos = imagem_canais.convert("RGB")
-        r, g, b = canais_convertidos.split()
-        return r, g, b
+        if len(imagem_canais.mode) < 4:
+            canais_convertidos = imagem_canais.convert("RGB")
+            r, g, b = canais_convertidos.split()
+            return r, g, b
+        else:
+            r, g, b, l = imagem_canais.split()
+            return r, g, b, l
+
 
 def canaistamanho_imagem():
     if verificar_diretorio("Resources") == True:
-        r, g, b = importar_imagem("imagetest.png")
-        r.show()
+        r, g, b, l = importar_imagem("imagetest.png")
+        g.show()
         l_im, a_im = verificar_tamanho_imagem("Resources/imagetest.png")
-        return r, g, b, l_im, a_im
+        return r, g, b, l, l_im, a_im
 
     else:
         print("Pasta não existe...")
         exit()
+
+
+canaistamanho_imagem()
