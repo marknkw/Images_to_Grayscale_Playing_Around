@@ -20,6 +20,8 @@ def verificar_diretorio(nome):
 def verificar_tamanho_imagem(imagem):
     return (Image.open(imagem)).size
 
+"""def media_dos_pixels():"""
+
 def importar_imagem(imagem):
     imagem_inicial = "Resources/" + imagem
     print(imagem_inicial)
@@ -28,13 +30,13 @@ def importar_imagem(imagem):
         r, g, b = canais_convertidos.split()
         return r, g, b
 
+def canaistamanho_imagem():
+    if verificar_diretorio("Resources") == True:
+        r, g, b = importar_imagem("imagetest.png")
+        r.show()
+        l_im, a_im = verificar_tamanho_imagem("Resources/imagetest.png")
+        return r, g, b, l_im, a_im
 
-if verificar_diretorio("Resources") == True:
-    r, g, b = importar_imagem("imagetest.png")
-    r.show()
-    l_im, a_im = verificar_tamanho_imagem("Resources/imagetest.png")
-    print(l_im, a_im)
-
-else:
-    print("Pasta não existe...")
-    exit()
+    else:
+        print("Pasta não existe...")
+        exit()
