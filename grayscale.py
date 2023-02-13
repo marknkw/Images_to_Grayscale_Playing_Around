@@ -1,4 +1,3 @@
-"""Initial commit of the program"""
 from PIL import Image
 import os
 import math
